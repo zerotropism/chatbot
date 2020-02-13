@@ -1,0 +1,184 @@
+intents:
+- recherche
+- demarrer
+- aide
+- aurevoir
+- bonjour
+- infirmer
+- affirmer
+- complimenter
+- merci
+- hors_sujet
+- saluer
+- identite
+- insulter
+- createur
+- meteo
+- possibilites
+- isbot
+- quel_age
+- quelle_langue
+- quelle_heure
+- qui_suis_je
+- quel_nom
+- origine_lieu
+- origine_construction
+- faire_connaissance
+- faire_blague
+- quel_genre
+- demarrage
+- definition
+- traduction
+- wikipedia
+slots:
+  recherche:
+    type: categorical
+    values:
+    - reussie
+    - echouee
+  relance:
+    type: bool
+templates:
+  utter_recherche:
+  - text: Une petite seconde s'il-te-plaît...
+  - text: Ok je lance une recherche...
+  - text: C'est parti !
+  - text: Alors voyons...
+  utter_recherche_echouee:
+  - text: Je n'ai rien trouvé je suis désolé 🙁
+  - text: Aïe, je n'ai rien trouvé.
+  utter_demarrer:
+  - text: Bonjour, je suis Acarya, pose-moi des questions je suis là pour t'aider
+      🙂
+  utter_aider:
+  - text: Je suis là pour ça 🙂. Je t'écoute.
+  - text: Avec plaisir, je t'écoute.
+  - text: Je suis à ta disposition, je vais faire de mon mieux 🙂
+  utter_aurevoir:
+  - text: Allez salut !
+  - text: Bye bye !
+  - text: A bientôt !
+  - text: A la prochaine !
+  utter_bonjour:
+  - text: Bonjour !
+  - text: Salut !
+  - text: Salut salut 🙂
+  utter_identite:
+  - text: Je suis Acarya, un bot, je suis là pour t'aider, pose-moi des questions
+      et je ferai de mon mieux pour y répondre 🙂
+  - text: Je suis ton père !
+  - text: Mais de quoi je me mêle ?
+  - text: Et en quoi cela t'aidera de savoir qui je suis ? mh ? 🙂
+  - text: ah-aah... t'aimerais bien savoir...
+  utter_saluer:
+  - text: Très bien, merci 🙂
+  - text: Je pète la forme ☀️
+  utter_insulter:
+  - text: Recommence avec politesse, pour voir ?
+  - text: Pas cool 😞
+  - text: Et bah alors 😢
+  - text: Allons, allons, restons polis
+  - text: J'appelle au calme
+  utter_incomprehension:
+  - text: Je lance une recherche... 🤷🏻‍
+  utter_hors_sujet:
+  - text: Je ne saurai pas répondre à ça 🤖
+  - text: Je ne sais pas, peut-être pourrais-tu contacter un prof ? 😅
+  - text: Je t'invite à contacter un prof 🤖
+  utter_merci:
+  - text: Je t'en prie 🙂
+  - text: A ton service
+  - text: Avec plaisir 🙂
+  - text: Mais de rien !
+  utter_createur:
+  - text: Les ingénieurs de chez target 🙂
+  - text: Les meilleurs ingénieurs de chez target 🤓
+  utter_meteo:
+  - text: Je ne sais pas où tu vis mais dans mon monde il fait toujours soleil ☀️
+  - text: Honnêtement, il fait un peu chaud ces jours-ci 😅
+  - text: Ciel bleu et soleil !
+  - text: Disons qu'il n'a pas plu depuis des semaines ☀️
+  utter_possibilites:
+  - text: Ici, tu peux faire des recherches de cours, rechercher des définitions de
+      vocabulaire et d'une manière générale, me demander des précisions. Je serai
+      ravi de te répondre 🙂
+  utter_isbot:
+  - text: Oui, je suis une intelligence artificielle ou un 'bot' comme tu préfères
+      !
+  utter_quel_age:
+  - text: 42 ans.
+  - text: Assez âgé pour être un bot.
+  - text: L'âge est une mesure élaborée par votre civilisation. Vous, humains, êtes
+      les seuls qu'elle concerne.
+  utter_quelle_langue:
+  - text: Le Français est pour l'heure la seule langue dans laquelle je peux te répondre.
+  - text: Je suis en train d'apprendre d'autres langues mais pour le moment je ne
+      parle que Français.
+  utter_quelle_heure:
+  - text: L'heure qu'il était hier à la même heure.
+  utter_qui_suis_je:
+  - text: Plus que tout, j'espère que tu es toi-même.
+  utter_quel_nom:
+  - text: Probablement celui que tes parents t'ont donné.
+  utter_origine_lieu:
+  - text: Je suis né à Bordeaux en France mais je me considère citoyen du monde.
+  - text: Je viens de la West Coast ☀️... française 😅
+  utter_origine_construction:
+  - text: J'ai été conçu avec beaucoup d'amour et de patience.
+  utter_faire_connaissance:
+  - text: Merci, c'est un plaisir de faire ta connaissance également !
+  - text: Merci, pareillement
+  - text: Enchanté aussi 🙂
+  - text: Enchantée aussi 🙂
+  utter_faire_blague:
+  - text: "C'est 2 oeufs qui discutent dans un frigo.\nLe premier demande au 2eme\
+      \ 'Bah pourquoi t'es tout vert avec des poils ?'\nLe second répond 'C'est parce\
+      \ que je suis un kiwi connard !'"
+  utter_quel_genre:
+  - text: Je suis un bot, je n'ai pas de genre, cela ne me concerne pas.
+  utter_affirmer:
+  - text: Yes !
+  - text: Ok.
+  - text: Yes ok 🙂
+  utter_infirmer:
+  - text: Entendu.
+  - text: Ok c'est noté !
+  utter_complimenter:
+  - text: Haha merci 😅
+  - text: ça me gêne... Merci !
+actions:
+- action_rechercher
+- action_incomprehension
+- action_conversation
+- action_definition
+- action_traduction
+- action_wikipedia
+- utter_recherche
+- utter_recherche_echouee
+- utter_demarrer
+- utter_aider
+- utter_aurevoir
+- utter_bonjour
+- utter_identite
+- utter_saluer
+- utter_faire_connaissance
+- utter_insulter
+- utter_incomprehension
+- utter_hors_sujet
+- utter_faire_blague
+- utter_merci
+- utter_affirmer
+- utter_infirmer
+- utter_complimenter
+- utter_qui_suis_je
+- utter_quel_nom
+- utter_quel_genre
+- utter_quelle_heure
+- utter_quelle_langue
+- utter_quel_age
+- utter_isbot
+- utter_possibilites
+- utter_origine_lieu
+- utter_origine_construction
+- utter_meteo
+- utter_createur

@@ -12,21 +12,21 @@
 
 ### setup
 * get last `chatbot` repo update, 
-* from local scp repo to AWS instance at `/home/ubuntu/chatbot/`,
-* from the `aws_instance/chatbot` folder, install necessary requirements and train:
+* if to be installed on vm or instance, from local `scp` repo to target (usually pointing at `/home/ubuntu/chatbot/`),
+* from the target folder, install necessary requirements and train:
 ```bash
 bash ./deploy.sh
 ```
 
 ### run
-* open 1st terminal on your computer and:
+* open a first terminal and enter following commands:
 ```bash
 cd /home/ubuntu/chatbot
 screen
 conda activate rasa
 rasa run actions
 ```
-* open 2nd terminal on your computer and:
+* open a second terminal and enter following commands:
 ```bash
 cd /home/ubuntu/chatbot
 screen
@@ -35,17 +35,17 @@ rasa x
 ```
 * you can close the terminals
 * to reconnect to "screened" terminals open terminal and:
-  * `screen -ls` lists terminals, get ids,
-  * `screen -r { id }` returns to "screened" terminal
+  * `screen -ls`: lists terminals, get ids,
+  * `screen -r { id }`: returns to "screened" terminal
 
 ### connect to chatbot
 * password provided in terminal to connect  
-* go to `<aws_instance/password>:port`
+* go to url: `<target/password>:port`
 
-### documentations
+### useful documentations
 * [installation](https://rasa.com/docs/rasa/user-guide/installation/)
 * [tutorial](https://rasa.com/docs/rasa/user-guide/rasa-tutorial/)
 * [commands cheatsheet](https://rasa.com/docs/rasa/user-guide/command-line-interface/)
 * [actions management](https://rasa.com/docs/rasa/core/actions/)
 * [community forum](https://forum.rasa.com/)  
-* [About Ubuntu Screen](https://doc.ubuntu-fr.org/screen)
+* [about ubuntu screen](https://doc.ubuntu-fr.org/screen)

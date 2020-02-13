@@ -7,7 +7,8 @@
 * `rasa` is the framework. It is comprised of two distinct parts:
   * `NLU` which processes natural language understanding tasks to generate a language model,
   * and `Core` which processes the expression.
-  both are trained separately.
+  
+  Both are trained separately.
 * `rasa x` is the interface that helps users manage, train and deploy their rasa model.
 
 ### setup
@@ -17,7 +18,7 @@
 ```bash
 bash ./deploy.sh
 ```
-It will setup a download and setup a bunch of requirements and will train your model then saved in `.../chatbot/models/` folder.
+It will download and setup a bunch of requirements and train your model which then will be saved in `.../chatbot/models/` folder.
 
 ### run
 * open a first terminal and enter following commands:

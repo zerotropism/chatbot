@@ -31,16 +31,16 @@ VOCAB_FILES_NAMES = {'vocab_file': 'vocab.txt'}
 PRETRAINED_VOCAB_FILES_MAP = {
     'vocab_file':
     {
-        'bert-base-multilingual-uncased-target': "https://S3_BUCKET_PLACEHOLDER/MODEL_ARCHIVE_PLACEHOLDER/bert-base-multilingual-uncased-vocab.txt",
+        'bert-base-multilingual-uncased': "target_link",
     }
 }
 
 PRETRAINED_POSITIONAL_EMBEDDINGS_SIZES = {
-    'bert-base-multilingual-uncased-target': 512,
+    'bert-base-multilingual-uncased': 512,
 }
 
 PRETRAINED_INIT_CONFIGURATION = {
-    'bert-base-multilingual-uncased-target': {'do_lower_case': True},
+    'bert-base-multilingual-uncased': {'do_lower_case': True},
 }
 
 

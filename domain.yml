@@ -48,7 +48,7 @@ templates:
   - text: Je n'ai rien trouvé je suis désolé 🙁
   - text: Aïe, je n'ai rien trouvé.
   utter_demarrer:
-  - text: Bonjour, je suis Acarya, pose-moi des questions je suis là pour t'aider
+  - text: Bonjour, je suis un bot, pose-moi des questions je suis là pour t'aider
       🙂
   utter_aider:
   - text: Je suis là pour ça 🙂. Je t'écoute.
@@ -64,7 +64,7 @@ templates:
   - text: Salut !
   - text: Salut salut 🙂
   utter_identite:
-  - text: Je suis Acarya, un bot, je suis là pour t'aider, pose-moi des questions
+  - text: Je suis un bot, je suis là pour t'aider, pose-moi des questions
       et je ferai de mon mieux pour y répondre 🙂
   - text: Je suis ton père !
   - text: Mais de quoi je me mêle ?
@@ -91,8 +91,8 @@ templates:
   - text: Avec plaisir 🙂
   - text: Mais de rien !
   utter_createur:
-  - text: Les ingénieurs de chez Skillogs 🙂
-  - text: Les meilleurs ingénieurs de chez Skillogs 🤓
+  - text: Des ingénieurs fort sympathiques 🙂
+  - text: Les meilleurs des meilleurs 🤓
   utter_meteo:
   - text: Je ne sais pas où tu vis mais dans mon monde il fait toujours soleil ☀️
   - text: Honnêtement, il fait un peu chaud ces jours-ci 😅

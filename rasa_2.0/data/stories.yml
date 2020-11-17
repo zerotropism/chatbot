@@ -1,0 +1,49 @@
+version: "2.0"
+
+stories:
+
+- story: rechercher
+  steps:
+  - intent: bonjour
+  - action: utter_bonjour
+  - intent: recherche
+  - action: utter_recherche
+  - action: action_rechercher
+  - slot_was_set:
+    - recherche: reussie
+  - slot_was_set:
+    - relance: false
+  - intent: contact
+  - action: utter_contact
+  - intent: aurevoir
+  - action: utter_aurevoir
+
+- story: trouver
+  steps:
+  - intent: recherche
+  - action: utter_recherche
+  - action: action_rechercher
+  - slot_was_set:
+    - recherche: reussie
+  - slot_was_set:
+    - relance: false
+
+- story: ne_pas_trouver
+  steps:
+  - intent: recherche
+  - action: utter_recherche
+  - action: action_rechercher
+  - slot_was_set:
+    - recherche: echouee
+  - slot_was_set:
+    - relance: false
+
+- story: contacter
+  steps:
+  - intent: contact
+  - action: utter_contact
+
+# - story: conversation
+#   steps:
+#   - intent: saluer OR identite OR insulter OR createur OR possibilites OR isbot OR quel_age OR quelle_langue OR quelle_heure OR qui_suis_je OR quel_nom OR origine_lieu OR origine_construction OR faire_connaissance OR faire_blague OR quel_genre OR merci OR affirmer OR infirmer OR complimenter
+#   - action: action_conversation

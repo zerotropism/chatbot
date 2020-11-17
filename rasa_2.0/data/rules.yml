@@ -1,0 +1,8 @@
+version: "2.0"
+
+rules:
+
+- rule: Déclenche bonjour à chaque fois que l'utilisateur dit salue
+  steps:
+  - intent: bonjour
+  - action: utter_bonjour

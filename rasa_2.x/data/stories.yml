@@ -43,7 +43,28 @@ stories:
   - intent: contact
   - action: utter_contact
 
-# - story: conversation
-#   steps:
-#   - intent: saluer OR identite OR insulter OR createur OR possibilites OR isbot OR quel_age OR quelle_langue OR quelle_heure OR qui_suis_je OR quel_nom OR origine_lieu OR origine_construction OR faire_connaissance OR faire_blague OR quel_genre OR merci OR affirmer OR infirmer OR complimenter
-#   - action: action_conversation
+- story: conversation
+  steps:
+  - or:
+    - intent: saluer
+    - intent: identite
+    - intent: insulter
+    - intent: createur
+    - intent: possibilites
+    - intent: isbot
+    - intent: quel_age
+    - intent: quelle_langue
+    - intent: quelle_heure
+    - intent: qui_suis_je
+    - intent: quel_nom
+    - intent: origine_lieu
+    - intent: origine_construction
+    - intent: faire_connaissance
+    - intent: faire_blague
+    - intent: quel_genre
+    - intent: merci
+    - intent: affirmer
+    - intent: infirmer
+    - intent: complimenter
+    - intent: hors_sujet
+  - action: action_conversation

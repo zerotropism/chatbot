@@ -3,38 +3,60 @@ Version 1.x of the RASA framework.
 ## deploy architecture
 <img src="img_src/chatbot_archi.png" title="Chatbot architecture">
 
-## remote setup
-* get last `chatbot` repo update, 
-* if to be installed on vm or instance: from local `scp` repo to target (usually pointing at `/home/os/chatbot/`),
-* from the target folder, install necessary requirements and deploy:
+## local setup
+* setup env
+* run
 ```bash
-bash ./deploy.sh
+bash ./local_deploy.sh
 ```
-It will download and setup a bunch of requirements and train your model which then will be saved in `.../chatbot/models/` folder.
+which will:
+* setup os & conda configs
+* install env requirements
+* install founders' interface
+* train & save your model in `./rasa_1.x/models/`
+
+## local run
+* train with `rasa train`
+* run the bot with `rasa run -m models --debug`
+* run the custom actions file with `rasa run actions`
+
+## remote setup
+* get last repo update, 
+* from local, `scp` repo to target (usually pointing at `/home/[os]/chatbot/`),
+* from the target, run:
+```bash
+bash ./remote_deploy.sh
+```
+which will:
+* setup os & conda configs
+* install env requirements
+* install founders' interface
+* train & save your model in `/home/[os]/rasa_1.x/models/`
 
 ## remote run
-* open a first terminal and enter following commands:
+* run:
 ```bash
 cd /home/ubuntu/chatbot
 screen
 conda activate rasa
 rasa run actions
 ```
-* open a second terminal and enter following commands:
+* then in a second terminal run:
 ```bash
 cd /home/ubuntu/chatbot
 screen
 conda activate rasa
 rasa x
 ```
-* you can close the terminals
-* to reconnect to "screened" terminals open terminal and:
-  * `screen -ls`: lists terminals id,
-  * `screen -r { id }`: returns to the corresponding "screened" terminal
+* close the terminals
+* later, "screened" terminals can be accessed again by running:
+  * `screen -ls`: which lists terminals id,
+  * `screen -r { id }`: which aaccess the corresponding "screened" terminal
 
-## connect to chatbot
-* password embedded in url provided in second terminal `rasa x`  
+## connect to chatbot founders interface
+* password embedded in url provided in second terminal `rasa x`
 * go to url: `<target/password>:port`
 
 ## docs
-[v1.x docs](https://legacy-docs-v1.rasa.com/)
+* [v1.x docs](https://legacy-docs-v1.rasa.com/)
+* [about ubuntu screen](https://doc.ubuntu-fr.org/screen) for remote deploy

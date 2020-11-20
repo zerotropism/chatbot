@@ -76,19 +76,31 @@ class ActionRechercher(Action):
                     "Hop ! À toi de chercher là-dedans maintenant :"
                 ]
 
-                # en les concaténant tous dans un même message
+                # # en les concaténant tous dans un même message
+                # message = random.choice(retour)
+                # for i in range(min(len(bm25_result), arg_dict['es_nb_max_result'])):
+                #     current_titre = bm25_result.iloc[i]['Titre'].replace('\"', '')
+                #     current_lien = bm25_result.iloc[i]['Lien'].replace('\"', '')
+                #     current_lien = re.sub('\s+', '', current_lien)
+                #     message = message + ' \"{}\" \"{}\" '.format(
+                #             current_titre,
+                #             current_lien
+                #             )
+                # dispatcher.utter_message(message)
+                # print('message: {}'.format(message))
+
                 message = random.choice(retour)
                 for i in range(min(len(bm25_result), arg_dict['es_nb_max_result'])):
                     current_titre = bm25_result.iloc[i]['Titre'].replace('\"', '')
                     current_lien = bm25_result.iloc[i]['Lien'].replace('\"', '')
                     current_lien = re.sub('\s+', '', current_lien)
-                    message = message + ' \"{}\" \"{}\" '.format(
+                    message = message + '\n* [{}]({})'.format(
                             current_titre,
                             current_lien
                             )
                 dispatcher.utter_message(message)
                 print('message: {}'.format(message))
-
+                
                 # puis retourne le slot "recherche" à "reussie",
                 # et retourne le slot "relance" à "False"
                 return [

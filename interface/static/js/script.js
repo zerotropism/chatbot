@@ -66,54 +66,84 @@ function isValidUrl(string) {
 	return true;
 }
 
+// function formatHyperlinkText(string) {
+// 	console.log("formatHyperlinkText::string: ",string)
+// 	if(string.includes('\"')) {
+// 		var FinalMsg = [];
+// 		var StringArray = string.split('\"');
+// 		console.log("formatHyperlinkText::StringArray: ",StringArray)
+// 		var BotMsg = StringArray[1]
+// 		// console.log("formatHyperlinkText::BotMsg: ",BotMsg);
+// 		var CleanHyperlinks = []
+// 		var LinkName = []
+// 		var LinkUrl = []
+// 		var i;
+
+// 		for (i = 3; i < StringArray.length; i++) {
+// 			if(i%2==1) {
+// 			CleanHyperlinks.push(StringArray[i]);
+// 			}
+// 		}
+// 		// console.log("formatHyperlinkText::CleanHyperlinks: ",CleanHyperlinks);
+
+// 		for (i = 0; i < CleanHyperlinks.length; i++) {
+// 			if(i%2==0) {
+// 				LinkName.push(CleanHyperlinks[i]);
+// 			}
+// 			else {
+// 				LinkUrl.push(CleanHyperlinks[i]);
+// 			}
+// 		}
+// 		// console.log("formatHyperlinkText::LinkName: ",LinkName);
+// 		// console.log("formatHyperlinkText::LinkUrl: ",LinkUrl);
+
+// 		FinalMsg.push(BotMsg);
+// 		// <a href="url">link text</a>
+// 		for (i = 0; i < LinkName.length; i++) {
+// 			// HyperLinks.push('<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>')
+// 			var CurrentHyperLinks = '<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>';
+// 			FinalMsg.push(CurrentHyperLinks)
+// 		}
+
+// 		// console.log("formatHyperlinkText::FinalMsg: ",FinalMsg);
+// 		return FinalMsg;
+// 	}
+// 	else {
+// 		return string;
+// 	}
+// }
+
 function formatHyperlinkText(string) {
+	const markdownLinkExtractor = require('markdown-link-extractor');
 	console.log("formatHyperlinkText::string: ",string)
-	if(string.includes('\"')) {
-		var FinalMsg = [];
-		var StringArray = string.split('\"');
-		console.log("formatHyperlinkText::StringArray: ",StringArray)
-		var BotMsg = StringArray[1]
+	const BotMsg = markdownLinkExtractor(string)
+	console.log("formatHyperlinkText::BotMsg: ",BotMsg);
+
+	// if(string.includes('\"')) {
+		// var StringArray = string.split('\"');
+		// console.log("formatHyperlinkText::StringArray: ",StringArray)
+		// const BotMsg = string;
+		// const links = markdownLinkExtractor(BotMsg);
 		// console.log("formatHyperlinkText::BotMsg: ",BotMsg);
-		var CleanHyperlinks = []
-		var LinkName = []
-		var LinkUrl = []
-		var i;
-
-		for (i = 3; i < StringArray.length; i++) {
-			if(i%2==1) {
-			CleanHyperlinks.push(StringArray[i]);
-			}
-		}
-		// console.log("formatHyperlinkText::CleanHyperlinks: ",CleanHyperlinks);
-
+		// console.log("formatHyperlinkText::links: ",links);
 		
-		for (i = 0; i < CleanHyperlinks.length; i++) {
-			if(i%2==0) {
-				LinkName.push(CleanHyperlinks[i]);
-			}
-			else {
-				LinkUrl.push(CleanHyperlinks[i]);
-			}
-		}
-		// console.log("formatHyperlinkText::LinkName: ",LinkName);
-		// console.log("formatHyperlinkText::LinkUrl: ",LinkUrl);
+	// 	var i;
+	// 	var FinalMsg = [];
+	// 	FinalMsg.push(BotMsg);
+	// 	// <a href="url">link text</a>
+	// 	for (i = 0; i < LinkName.length; i++) {
+	// 		// HyperLinks.push('<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>')
+	// 		var CurrentHyperLinks = '<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>';
+	// 		FinalMsg.push(CurrentHyperLinks)
+	// 	}
 
-		FinalMsg.push(BotMsg);
-		// <a href="url">link text</a>
-		for (i = 0; i < LinkName.length; i++) {
-			// HyperLinks.push('<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>')
-			var CurrentHyperLinks = '<a href=\"' + LinkUrl[i] + '\">' + LinkName[i] + '</a>';
-			FinalMsg.push(CurrentHyperLinks)
-		}
-
-		// console.log("formatHyperlinkText::FinalMsg: ",FinalMsg);
-		return FinalMsg;
-	}
-	else {
-		return string;
-	}
-
-	
+	// 	// console.log("formatHyperlinkText::FinalMsg: ",FinalMsg);
+	// 	return FinalMsg;
+	// }
+	// else {
+	// 	return string;
+	// }
+	return BotMsg
 }
 
 //------------------------------------ Set bot response -------------------------------------
@@ -127,51 +157,51 @@ function setBotResponse(val) {
 			$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
 
 		} else {
-			//if we get response from Rasa
-			for (i = 0; i < val.length; i++) {
-				//check if there is text message
-				if (val[i].hasOwnProperty("text")) {
-					var CurrentRasaResponse = formatHyperlinkText(val[i].text);
+			var CurrentRasaResponse = formatHyperlinkText(val)
+			var BotResponse = '<img class="botAvatar" src="./static/img/botAvatar.png"><p class="botMsg">' + CurrentRasaResponse + '</p><div class="clearfix"></div>';
+			$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
 
-					if(i>0){
-						var j;
-						for (j = 0; j < CurrentRasaResponse.length; j++) {
-							// console.log("setBotResponse::formatHyperlinkText(val[i].text).length: ",formatHyperlinkText(val[i].text).length);
-							if(j==0){
-								var BotResponse = '<img class="botAvatar" src="./static/img/botAvatar.png"> &nbsp; ' + CurrentRasaResponse[j] + '</p><div class="clearfix"></div>';
-								$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
-							}
-							else {
-								var BotResponse = '<p> &nbsp; &nbsp; &nbsp; *' + CurrentRasaResponse[j] + '</p><div class="clearfix"></div>';
-								$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
-							}
-						}
-					}
-					else {
-						var BotResponse = '<img class="botAvatar" src="./static/img/botAvatar.png">' + CurrentRasaResponse + '</p><div class="clearfix"></div>';
-						$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
-					}
-					
-				}
+			// //if we get response from Rasa
+			// for (i = 0; i < val.length; i++) {
+			// 	//check if there is text message
+			// 	if (val[i].hasOwnProperty("text")) {
+			// 		var CurrentRasaResponse = formatHyperlinkText(val[i].text);
 
-				//check if there is image
-				if (val[i].hasOwnProperty("image")) {
-					var BotResponse = '<div class="singleCard">' +
-						'<img class="imgcard" src="' + val[i].image + '">' +
-						'</div><div class="clearfix">'
-					$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
-				}
+			// 		if(i>0){
+			// 			var j;
+			// 			for (j = 0; j < CurrentRasaResponse.length; j++) {
+			// 				// console.log("setBotResponse::formatHyperlinkText(val[i].text).length: ",formatHyperlinkText(val[i].text).length);
+			// 				if(j==0){
+			// 					var BotResponse = '<img class="botAvatar" src="./static/img/botAvatar.png"> &nbsp; ' + CurrentRasaResponse[j] + '</p><div class="clearfix"></div>';
+			// 					$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
+			// 				}
+			// 				else {
+			// 					var BotResponse = '<p> &nbsp; &nbsp; &nbsp; *' + CurrentRasaResponse[j] + '</p><div class="clearfix"></div>';
+			// 					$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
+			// 				}
+			// 			}
+			// 		}
+			// 		else {
+			// 			var BotResponse = '<img class="botAvatar" src="./static/img/botAvatar.png">' + CurrentRasaResponse + '</p><div class="clearfix"></div>';
+			// 			$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
+			// 		}		
+			// 	}
 
-				//check if there is  button message
-				if (val[i].hasOwnProperty("buttons")) {
-					addSuggestion(val[i].buttons);
-				}
+			// 	//check if there is image
+			// 	if (val[i].hasOwnProperty("image")) {
+			// 		var BotResponse = '<div class="singleCard">' +
+			// 			'<img class="imgcard" src="' + val[i].image + '">' +
+			// 			'</div><div class="clearfix">'
+			// 		$(BotResponse).appendTo('.chats').hide().fadeIn(1000);
+			// 	}
 
-
-			}
+			// 	//check if there is  button message
+			// 	if (val[i].hasOwnProperty("buttons")) {
+			// 		addSuggestion(val[i].buttons);
+			// 	}
+			// }
 			scrollToBottomOfResults();
 		}
-
 	}, 500);
 }
 

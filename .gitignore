@@ -3,3 +3,6 @@
 __pycache__
 *.db
 **/models/*
+**/node_modules/*
+**/package-lock.json
+**/package.json 

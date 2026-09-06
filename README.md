@@ -1,3 +1,5 @@
+> Archived in September 2026. Legacy project (2020), kept for reference. Not maintained, dependencies not updated.
+
 # Multi-domain chatbot
 The present repo regroups 
 * a remote deploy backend [1.x](https://github.com/zerotropism/chatbot/tree/master/rasa_1.x)
